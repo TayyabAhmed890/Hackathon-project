@@ -10,7 +10,7 @@ const SofaSection = () => {
     <section className='h-[auto] w-auto  flex items-center bg-[#F1F0FF]'>
         <div className='h-[auto] w-auto  m-auto flex items-center flex-wrap justify-center'>
         <div> 
-            <Image src="/Products/Sofa.svg" alt='' height={550} width={558}></Image>
+            <Image src="/Products/sofa.svg" alt='' height={550} width={558}></Image>
         </div>
         <div className='flex flex-col gap-5'>
             <h1 className={`${Josefin.className} text-[35px] font-bold`}>Unique Features Of leatest & <br />

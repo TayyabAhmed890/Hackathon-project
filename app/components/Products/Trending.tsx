@@ -68,7 +68,7 @@ const Trending = () => {
             </div>
             <div className='flex justify-end'>
 
-                <img src="/Products/Time.svg" alt="" className='w-[213px] h-[207px] mt-3'/>
+                <img src="/Products/time.svg" alt="" className='w-[213px] h-[207px] mt-3'/>
             </div>
             </div>
             <div className='h-[270px] w-[420px] bg-[#EEEFFB]'>
@@ -78,7 +78,7 @@ const Trending = () => {
                 </div>
             <div className='flex justify-end'>
 
-                <img src="/Products/Table.svg" alt="" className='w-[312px] h-[173px] mt-4'/>
+                <img src="/Products/table.svg" alt="" className='w-[312px] h-[173px] mt-4'/>
             </div>
             </div>
             <div className='h-[262px] w-[267px]  flex flex-col justify-between '>
