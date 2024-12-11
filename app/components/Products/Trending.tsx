@@ -6,7 +6,7 @@ const Josefin = Josefin_Sans({subsets:['latin']});
 const Trending = () => {
   return (
     <>
-    <section className='flex flex-col justify-center items-center gap-9 '>
+    <section className='container mx-auto bg-pink-600 flex flex-col justify-center items-center gap-9 '>
         <div>
         <h1 className={`${Josefin.className} font-bold text-4xl mt-7 text-[#1A0B5B]`}>Featured Products</h1>
         </div>
@@ -60,7 +60,7 @@ const Trending = () => {
                 </div>
             </div>
         </div>
-        <div className='h-auto w-auto flex items-center justify-center gap-[22px] flex-wrap mb-10 '>
+        <div className='container px-5 flex items-center justify-center gap-[22px] flex-wrap mb-10 '>
             <div className='h-[270px] w-[420px] bg-[#FFF6FB] flex flex-col '>
                 <div className='w-[269px] h-[56px]  flex flex-col px-2 py-2'>
             <h1 className={`${Josefin.className} text-[25px]`}>23% off in all products</h1>

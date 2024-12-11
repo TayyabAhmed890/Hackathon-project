@@ -8,7 +8,7 @@ import { FiShoppingCart } from "react-icons/fi";
 const Top = () => {
   return (
     <>
-    <nav className='flex justify-around h-[44px] w-auto bg-[#7E33E0] items-center text-white'>
+    <nav className='flex justify-around h-[44px] w-full bg-[#7E33E0] items-center text-white'>
         <div>
             <div className='flex gap-2 items-center'>
                 <Image src="/Header/mail.svg" alt='' height={16} width={16}></Image>

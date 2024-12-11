@@ -7,7 +7,8 @@ const Josefin = Josefin_Sans({subsets:['latin']});
 const SofaSection = () => {
   return (
     <>
-    <section className='h-[auto] w-auto  flex items-center bg-[#F1F0FF]'>
+    {/* bg-[#F1F0FF] */}
+    <section className='container mx-auto flex items-center bg-red-400 px-5'>
         <div className='h-[auto] w-auto  m-auto flex items-center flex-wrap justify-center'>
         <div> 
             <Image src="/Products/sofa.svg" alt='' height={550} width={558}></Image>

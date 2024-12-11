@@ -45,8 +45,7 @@ const Navbar = () => {
     </div>
     {/* Mobile Menu Button */}
     <div className="md:hidden flex items-center">
-          <span className="mx-2">
-              </span>
+
             <Sheet>
               <SheetTrigger>
               <IoMdMenu className='block md:hidden h-[60px] w-[60px]'/>
@@ -57,10 +56,9 @@ const Navbar = () => {
               <SheetContent>
                 <SheetHeader>
                   <SheetTitle>
-                    <div className=" font-bold text-xl my-4">
+                    <span className=" font-bold text-xl my-4">
                     <Link href="/"><Image src="/Header/Hekto.svg" alt='' height={34} width={98}></Image></Link>
-
-                  </div>
+                  </span>
                   </SheetTitle>
                   <SheetDescription>
                     <div className="flex flex-col gap-6">

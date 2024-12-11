@@ -12,8 +12,8 @@ const lato = Lato({subsets:['latin'],
 const Featured = () => {
   return (
    <>
-   <section className='mt-8 h-auto w-auto flex flex-col items-center justify-center '>
-    <h1 className={`${Josefin.className} font-bold text-4xl p-9 text-[#1A0B5B]`}>Featured Products</h1>
+   <section className='mt-8 h-auto w-auto flex flex-col items-center justify-center'>
+    <h1 className={`${Josefin.className} font-bold text-3xl sm:text-4xl p-9 text-[#1A0B5B]`}>Featured Products</h1>
     <div className='flex items-center gap-[29px] flex-wrap justify-center'>
     <div className=' h-[361px] w-[270px] flex justify-between items-center flex-col'><div className='h-[236px] w-[270px] flex items-center justify-center bg-gray-50'>
         <Image className='h-[178px] w-[178px]' src="/Products/chair.svg" alt='' height={178} width={178}></Image>

@@ -7,7 +7,7 @@ const ImageSection = () => {
     <>
     <section>
     <div
-      className="h-[462px] w-full bg-cover bg-center"
+      className="h-[462px] container mx-auto bg-cover bg-center"
       style={{ backgroundImage: "url('/Products/Wallpaper.svg')" }}
     >
       <div className="flex items-center justify-center h-full text-center">

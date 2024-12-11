@@ -7,7 +7,7 @@ const Josefin = Josefin_Sans({subsets:['latin']});
 
 const BlogSection = () => {
   return (
-   <section className=' flex flex-col items-center justify-center'>
+   <section className=' flex flex-col items-center justify-center bg-yellow-400'>
      <div><h1 className={`${Josefin.className} font-bold text-4xl p-9 text-[#1A0B5B]`}>Latest Blog</h1>
      </div>
      <div className='flex items-center justify-center gap-[56px] flex-wrap'>
