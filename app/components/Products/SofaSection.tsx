@@ -8,7 +8,7 @@ const SofaSection = () => {
   return (
     <>
     {/* bg-[#F1F0FF] */}
-    <section className='container mx-auto flex items-center bg-red-400 px-5'>
+    <section className='container mx-auto flex items-center px-5'>
         <div className='h-[auto] w-auto  m-auto flex items-center flex-wrap justify-center'>
         <div> 
             <Image src="/Products/sofa.svg" alt='' height={550} width={558}></Image>

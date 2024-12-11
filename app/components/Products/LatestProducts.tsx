@@ -7,7 +7,7 @@ const Josefin = Josefin_Sans({subsets:['latin']});
 const LatestProducts = () => {
   return (
    <>
-   <section className='container mx-auto flex flex-col items-center justify-center bg-lime-500'>
+   <section className='container mx-auto flex flex-col items-center justify-center'>
    <h1 className={`${Josefin.className} font-bold text-4xl pt-9 pb-3 text-[#1A0B5B]`}>Latest Products</h1>
    <div className='w-[auto] h-[auto] items-center flex justify-evenly mb-8 flex-wrap gap-6'>
     <h1>New Arrival</h1>

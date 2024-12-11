@@ -6,7 +6,7 @@ const Josefin = Josefin_Sans({subsets:['latin']});
 const Trending = () => {
   return (
     <>
-    <section className='container mx-auto bg-pink-600 flex flex-col justify-center items-center gap-9 '>
+    <section className='container mx-auto flex flex-col justify-center items-center gap-9 '>
         <div>
         <h1 className={`${Josefin.className} font-bold text-4xl mt-7 text-[#1A0B5B]`}>Featured Products</h1>
         </div>

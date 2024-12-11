@@ -1,19 +1,18 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { IoIosArrowDown } from "react-icons/io";
-import { IoMdMenu } from "react-icons/io";
+import { useState } from 'react';
 import { FiSearch } from "react-icons/fi";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { IoMdMenu,IoMdClose } from "react-icons/io";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu=()=>{
+    setIsMenuOpen(!isMenuOpen)
+  }
   return (
    <>
    <nav className='flex items-center my-[20px] px-8 '>
@@ -43,46 +42,23 @@ const Navbar = () => {
     </div>
     </div>
     </div>
-    {/* Mobile Menu Button */}
-    <div className="md:hidden flex items-center">
-
-            <Sheet>
-              <SheetTrigger>
-              <IoMdMenu className='block md:hidden h-[60px] w-[60px]'/>
-                
-                
-              </SheetTrigger>
-            
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>
-                    <span className=" font-bold text-xl my-4">
-                    <Link href="/"><Image src="/Header/Hekto.svg" alt='' height={34} width={98}></Image></Link>
-                  </span>
-                  </SheetTitle>
-                  <SheetDescription>
-                    <div className="flex flex-col gap-6">
-                      <Link href="/" className=" hover:text-gray-600 mx-1">
-                        Home
-                      </Link>
-                      <Link href="/" className=" hover:text-gray-600 mx-1">
-                        Pages
-                      </Link>
-                      <Link href="/" className=" hover:text-gray-600 mx-1">
-                        Products
-                      </Link>
-                      <Link href="/" className=" hover:text-gray-600 mx-1">
-                       Blogs
-                      </Link>
-                      <Link href="/Pages/Contact" className=" hover:text-gray-600 mx-1">
-                       Contact
-                      </Link>
-                    </div>
-                  </SheetDescription>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
-          </div>
+    <div className=' md:hidden' onClick={toggleMenu}>
+        {isMenuOpen ? <IoMdClose size={30}/>:
+        <IoMdMenu size={30} />
+        }
+      </div>
+      {
+        isMenuOpen && (
+          <ul className='flex flex-col gap-3 h-auto left-0 top-32 w-full bg-white text-cyan-700 md:hidden absolute z-10 '>
+        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/">Home</Link>
+        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/Services">Pages</Link>
+        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/Projects">Blog</Link>
+        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/Skills">Shop</Link>
+        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/Contact">Contact</Link>
+          </ul>
+        )
+      }
+   
    </nav>
    </>
   )
