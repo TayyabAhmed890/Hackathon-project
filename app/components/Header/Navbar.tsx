@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
    <>
    <nav className='flex items-center my-[20px] px-8 '>
-    <div className='h-[40px] w-[1170px] flex items-center justify-between mx-auto'>
+    <div className='h-[40px] w-[1170px] flex items-center justify-between mx-auto '>
       
     <div className='flex gap-x-24 justify-between'>
       <Image src="/Header/Hekto.svg" alt='' height={34} width={98}></Image>
@@ -35,7 +35,7 @@ const Navbar = () => {
     </ul>
     </div>
     </div>
-    <div className='hidden lg:block'>
+    <div className='hidden lg:block ml-7'>
     <div className='flex items-center h-[40px] w-[317px] bg-pink-600 justify-end '>
       <input type="text" className='h-[40px] w-[317px] outline-none px-2 border-2 border-gray-200'/>
       <FiSearch className='mx-4 h-[20px] w-[20px] text-white'/>
@@ -49,13 +49,21 @@ const Navbar = () => {
       </div>
       {
         isMenuOpen && (
-          <ul className='flex flex-col gap-3 h-auto left-0 top-32 w-full bg-white text-cyan-700 md:hidden absolute z-10 '>
-        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/">Home</Link>
-        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/Services">Pages</Link>
-        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/Projects">Blog</Link>
-        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/Skills">Shop</Link>
-        <Link className='hover:bg-cyan-700 hover:text-white py-4 px-4' href="/Contact">Contact</Link>
+          <>
+          <ul className='flex flex-col gap-3 h-auto left-0 top-32 w-full bg-white md:hidden absolute z-10 '>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/">Home</Link>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Error">Pages</Link>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Error">Blog</Link>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Error">Shop</Link>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Contact">Contact</Link>
+          <div className='z-10 m-4'>
+          <div className='flex items-center h-[40px] w-[317px] bg-pink-600 justify-end '>
+            <input type="text" className='h-[40px] w-[317px] outline-none px-2 border-2 border-gray-200'/>
+            <FiSearch className='mx-4 h-[20px] w-[20px] text-white'/>
+          </div>
+          </div>
           </ul>
+          </>
         )
       }
    

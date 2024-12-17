@@ -14,7 +14,7 @@ const Top = () => {
                 <Image src="/Header/mail.svg" alt='' height={16} width={16}></Image>
                 <h1>mhhasanul@gmail.com</h1>
                
-                <Image className='ml-4' src="/Header/Phone.svg" alt='' height={16} width={16}></Image>
+                <Image className='ml-4' src="/Header/phone.svg" alt='' height={16} width={16}></Image>
                 <h1>(12345)67890</h1>
             </div>
         </div>
