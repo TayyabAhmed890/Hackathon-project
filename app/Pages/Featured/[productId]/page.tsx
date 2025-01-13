@@ -7,11 +7,12 @@ import Link from "next/link";
 import Error from "../../Error/page";
 import { useCart } from "@/app/context/cart";// Import the useCart hook
 
+
 const ProductDetail = () => {
   const { productId } = useParams(); // Fetch product_id from URL
 
   // Find the product based on the ID
-  const product = ProductsData.find((prod) => prod.id === productId);
+  const product:any = ProductsData.find((prod) => prod.id === productId);
 
   const { addToCart } = useCart(); // Destructure addToCart from context
 
