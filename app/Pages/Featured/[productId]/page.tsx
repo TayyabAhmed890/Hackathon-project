@@ -1,6 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
-import { ProductsData } from "../data/page";
+import { ProductsData } from "../data/products";
 import Link from "next/link";
 import Error from "../../Error/page"
 

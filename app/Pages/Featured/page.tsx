@@ -6,7 +6,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
 import { FaSearchPlus } from "react-icons/fa";
 import Link from 'next/link';
-import { ProductsData } from './data/page';
+import { ProductsData } from './data/products';
 
 const Josefin = Josefin_Sans({subsets:['latin']});
 
