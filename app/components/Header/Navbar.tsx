@@ -7,11 +7,16 @@ import { useState } from 'react';
 import { FiSearch } from "react-icons/fi";
 import { IoMdMenu,IoMdClose } from "react-icons/io";
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isProductOpen, setIsProductMenuOpen] = useState(false)
 
   const toggleMenu=()=>{
     setIsMenuOpen(!isMenuOpen)
+  }
+  const toggleMenuProduct=()=>{
+    setIsProductMenuOpen(!isProductOpen)
   }
   return (
    <>
@@ -21,14 +26,26 @@ const Navbar = () => {
     <div className='flex gap-x-24 justify-between'>
       <Image src="/Header/Hekto.svg" alt='' height={34} width={98}></Image>
       <div className='hidden md:block'>
-    <ul className='flex items-center gap-[30px] mt-1'>
+    <ul className='flex items-center gap-[25px] mt-1'>
       
-      <li className='flex items-center gap-1'><Link href="/">Home</Link>
-      <IoIosArrowDown className='h-[12px] w-[12px]'/></li>
+      <li><Link href="/">Home</Link></li>
+      <li onClick={toggleMenuProduct} className='flex items-center gap-1 cursor-pointer'>Pages<IoIosArrowDown/>
       
+      {
+        isProductOpen && (
+          <>
+          <ul className='flex flex-col gap-3 h-auto w-auto bg-white absolute top-32 z-10'>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Shop">Shop Grid Default</Link>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Cart">Add to Cart</Link>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Checkout">Checkout</Link>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Order">Order Completed</Link>
+        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Account">My Account</Link>
       
-      <li><Link href="/Pages/Error">Pages</Link></li>
-      <li><Link href="/Pages/Error">Products</Link></li>
+          </ul>
+          </>
+        )
+      }
+      </li>
       <li><Link href="/Pages/Error">Blog</Link></li>
       <li><Link href="/Pages/Error">Shop</Link></li>
       <li><Link href="/Pages/Contact">Contact</Link></li>
@@ -52,7 +69,23 @@ const Navbar = () => {
           <>
           <ul className='flex flex-col gap-3 h-auto left-0 top-32 w-full bg-white md:hidden absolute z-10 '>
         <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/">Home</Link>
-        <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Error">Pages</Link>
+        <li onClick={toggleMenuProduct} className='hover:bg-[#7E33E0] flex items-center px-4 gap-1 cursor-pointer  py-4 hover:text-white'>Pages<IoIosArrowDown/>
+      
+      </li>
+      {
+        isProductOpen && (
+          <>
+          <ul className='flex flex-col gap-3 h-auto w-auto py-2 absolute top-32 z-20 bg-[#7E33E0] mx-4 rounded-md text-white'>
+        <Link className='  px-4' href="/Pages/Shop">Shop Grid Default</Link>
+        <Link className=' px-4' href="/Pages/Cart">Add to Cart</Link>
+        <Link className=' px-4' href="/Pages/Checkout">Checkout</Link>
+        <Link className=' px-4' href="/Pages/Order">Order Completed</Link>
+        <Link className='  px-4' href="/Pages/Account">My Account</Link>
+      
+          </ul>
+          </>
+        )
+      }
         <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Error">Blog</Link>
         <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Error">Shop</Link>
         <Link className='hover:bg-[#7E33E0] hover:text-white py-4 px-4' href="/Pages/Contact">Contact</Link>
