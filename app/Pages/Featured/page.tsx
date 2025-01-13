@@ -21,9 +21,10 @@ const Featured = () => {
     <h1 className={`${Josefin.className} font-bold text-3xl sm:text-4xl p-9 text-[#1A0B5B]`}>Featured Products</h1>
     <div className='flex items-center gap-[29px] flex-wrap justify-center '>
       {ProductsData.map((product)=>(
-        <Link href={`Pages/Featured/${product.id}`}>
+        
+        <Link key={product.id} href={`Pages/Featured/${product.id}`}>
       
-      <div key={product.id} className='hover:bg-[#2F1AC4] group h-[361px] w-[270px] flex justify-between items-center flex-col relative'>
+      <div  className='hover:bg-[#2F1AC4] group h-[361px] w-[270px] flex justify-between items-center flex-col relative'>
         <div className='h-[236px] w-[270px] flex items-center justify-center bg-gray-50'>
           <div className='  hidden absolute top-2 left-2 w-auto group-hover:block'>
             <div className='flex gap-3 '>
