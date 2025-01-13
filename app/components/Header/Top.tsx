@@ -4,6 +4,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
 import { FiShoppingCart } from "react-icons/fi";
+import Link from 'next/link';
 
 const Top = () => {
   return (
@@ -36,7 +37,9 @@ const Top = () => {
           <h1>Wishlist</h1>
           <FaRegHeart />
           </div>
+          <Link href={"/Pages/Cart"}>
           <FiShoppingCart className='ml-3'/>
+          </Link>
         
     
         </div>

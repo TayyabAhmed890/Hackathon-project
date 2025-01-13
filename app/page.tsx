@@ -9,6 +9,8 @@ import SpecialOffer from "./components/Products/SpecialOffer";
 import TopCategories from "./components/Products/TopCategories";
 import Trending from "./components/Products/Trending";
 
+
+
 export default function Home() {
   return (
     <>
