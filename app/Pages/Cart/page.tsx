@@ -5,6 +5,7 @@ import { useCart } from "@/app/context/cart"; // Import useCart hook
 import Link from "next/link";
 
 const CartPage = () => {
+  const { clearCart } = useCart();
   const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } = useCart(); // Access cart items and functions
 
   // Calculate the subtotal
@@ -78,9 +79,9 @@ const CartPage = () => {
             <div className="text-xl font-semibold">
               Subtotal: ${subtotal.toFixed(2)}
             </div>
-            <div className="flex">
+            <div className="flex gap-2 flex-wrap items-center">
               <Link href="/">
-                <button className="bg-[#7E33E0] text-white py-2  text-[7px] md:text-sm px-2 rounded-lg mr-2 ">
+                <button className="bg-[#7E33E0] text-white py-2  text-[7px] md:text-sm px-2 rounded-lg ">
                   Continue Shopping
                 </button>
               </Link>
@@ -89,6 +90,11 @@ const CartPage = () => {
                   Proceed to Checkout
                 </button>
               </Link>
+              
+                <button className="bg-green-600 text-white py-2 text-[7px] md:text-sm px-2 rounded-lg" onClick={clearCart}>
+                  Clear Cart
+                </button>
+              
             </div>
           </div>
         </div>

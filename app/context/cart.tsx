@@ -17,6 +17,9 @@ interface CartContextType {
   removeFromCart: (productId: string) => void;
   increaseQuantity: (productId: string) => void;
   decreaseQuantity: (productId: string) => void;
+  clearCart: () => void;
+  showPopup: boolean; // Added showPopup state
+  popupMessage: string; // Added message for the popup
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -24,12 +27,11 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [isClient, setIsClient] = useState(false); // Track if we're on the client side
   const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [showPopup, setShowPopup] = useState(false); // Track whether the popup is shown
+  const [popupMessage, setPopupMessage] = useState(''); // Message to display in the popup
 
   useEffect(() => {
-    // This will run only on the client side (browser)
     setIsClient(true);
-
-    // Retrieve the cart data from localStorage if available
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
@@ -37,7 +39,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    // Store cart items in localStorage whenever the cart changes
     if (isClient && cartItems.length > 0) {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }
@@ -54,6 +55,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         return [...prev, { ...product, quantity: 1 }];
       }
     });
+
+    // Show the popup with a message
+    setPopupMessage(`${product.name} has been added to your cart!`);
+    setShowPopup(true);
+
+    // Hide the popup after 3 seconds
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 3000);
   };
 
   const removeFromCart = (productId: string) => {
@@ -82,12 +92,17 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem('cartItems');
+  };
+
   if (!isClient) {
     return null; // Prevent rendering the component until client-side is mounted
   }
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, increaseQuantity, decreaseQuantity }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, showPopup, popupMessage }}>
       {children}
     </CartContext.Provider>
   );
