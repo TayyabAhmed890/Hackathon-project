@@ -1,12 +1,17 @@
+"use client"
 import Image from 'next/image'
-import React from 'react'
 import { Josefin_Sans } from 'next/font/google'
-
+import { useRouter } from 'next/navigation';
 
 
 const Josefin = Josefin_Sans({subsets:['latin']});
-const Hero = () => {
 
+const Hero = () => {
+  const router = useRouter()
+  
+      const ShopRoute = () =>{
+        router.push('/Pages/Shop')
+      }
   return (
     <>
     <section className='h-auto bg-[#F2F0FF] flex justify-around gap-4 items-center flex-wrap px-3'>
@@ -21,7 +26,7 @@ const Hero = () => {
             Trends in 2020</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing
             in phasellus non in justo.</p>
-            <button className='w-[150px] h-[50px] bg-pink-600 text-white mb-4 py-2'>Shop Now</button>
+            <button onClick={ShopRoute} className='w-[150px] h-[50px] bg-pink-600 text-white mb-4 py-2'>Shop Now</button>
         </div>
         <div className='my-14'>
         <Image className='' src="/Header/sofa.svg" alt='' height={689} width={706}></Image>
