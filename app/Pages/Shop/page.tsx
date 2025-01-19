@@ -39,7 +39,7 @@ const page = async () => {
         <div className='flex items-center'><Category/></div>
       </div>
        <div className='flex items-center gap-[29px] flex-wrap justify-center '>
-         {response.map((product,index)=>(
+         {response.map((product:any,index:number)=>(
            
            // <Link key={product.id} href={`Pages/Featured/${product.id}`}>
          

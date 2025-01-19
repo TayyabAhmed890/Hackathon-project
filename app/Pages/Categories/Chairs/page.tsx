@@ -40,7 +40,7 @@ const page =async () => {
         <div className='flex items-center'><Category/></div>
       </div>
         <div className='flex items-center gap-[29px] flex-wrap justify-center '>
-          {chairs.map((product,index)=>(
+          {chairs.map((product:any,index:number)=>(
             
             // <Link key={product.id} href={`Pages/Featured/${product.id}`}>
           
