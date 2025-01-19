@@ -46,7 +46,7 @@ const page = async () => {
     <section className='mt-8 h-auto w-auto flex flex-col items-center justify-center mb-5'>
       <div className='flex items-center w-full justify-center'>
        <h1 className={`${Josefin.className} font-bold text-3xl sm:text-4xl p-9 text-[#1A0B5B]`}>All Products</h1>
-        <div className='flex items-center mr-10'><Category/></div>
+        <div className='flex items-center mr-16'><Category/></div>
       </div>
        <div className='flex items-center gap-[29px] flex-wrap justify-center '>
          {response.map((product:Product,index:number)=>(
