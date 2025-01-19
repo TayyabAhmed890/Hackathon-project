@@ -5,7 +5,6 @@ import { Josefin_Sans } from 'next/font/google'
 import { FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
 import { FaSearchPlus } from "react-icons/fa";
-// import { ProductsData } from './data/products';
 import { client } from '@/sanity/lib/client';
 
 const Josefin = Josefin_Sans({subsets:['latin']});
@@ -14,7 +13,17 @@ const lato = Lato({subsets:['latin'],
     weight: ['400', '700','100']
 });
 
-const getData = async () => {
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  quantity: number;
+  price: number;
+  image_url: string;
+  rating?: number; // Optional field
+}
+
+const getData = async ():Promise<Product[]> => {
   const response = await client.fetch(`
     [
       *[_type == "product" && category == "Chair"][7],
@@ -45,7 +54,7 @@ const Featured = async () => {
    <section className='mt-8 h-auto w-auto flex flex-col items-center justify-center'>
     <h1 className={`${Josefin.className} font-bold text-3xl sm:text-4xl p-9 text-[#1A0B5B]`}>Featured Products</h1>
     <div className='flex items-center gap-[29px] flex-wrap justify-center'>
-      {product.map((product:any,index:number)=>(
+      {product.map((product:Product,index:number)=>(
         
         // <Link key={product.id} href={`Pages/Featured/${product.id}`}>
       
@@ -66,7 +75,7 @@ const Featured = async () => {
         <div className=' w-[14px] h-[4px] bg-[#F701A8] rounded-[10px]'></div>
         <div className=' w-[14px] h-[4px] group-hover:bg-[#FFEAC1] bg-[#00009D] rounded-[10px]'></div>
       </div>
-      <h1 className={`${Josefin.className} font-semibold text-[14px] group-hover:text-white text-[#151875]`}>{product.code}</h1>
+     
       <h1 className={`mb-3 ${lato.className} font-semibold text-[14px] group-hover:text-white text-[#151875]`}>{product.price}</h1>
       </div>
       // </Link>
