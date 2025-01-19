@@ -47,7 +47,7 @@ return response;
 }
 
 
-const page = async () => {
+const Featured = async () => {
   const product = await getData()
   return (
    <>
@@ -85,4 +85,4 @@ const page = async () => {
   )
 }
 
-export default page;
+export default Featured
