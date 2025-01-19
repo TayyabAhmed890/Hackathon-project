@@ -5,10 +5,8 @@ import { Josefin_Sans } from 'next/font/google'
 import { FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
 import { FaSearchPlus } from "react-icons/fa";
-import Link from 'next/link';
 // import { ProductsData } from './data/products';
 import { client } from '@/sanity/lib/client';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 const Josefin = Josefin_Sans({subsets:['latin']});
 

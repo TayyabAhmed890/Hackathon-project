@@ -1,9 +1,7 @@
 import Category from "@/app/components/Category";
 import { client } from "@/sanity/lib/client";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { Josefin_Sans, Lato } from "next/font/google";
 import Image from "next/image";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
 import { FaRegHeart, FaSearchPlus } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 
