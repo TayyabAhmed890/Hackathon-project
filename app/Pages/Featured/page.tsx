@@ -47,7 +47,7 @@ const Featured = async () => {
    <section className='mt-8 h-auto w-auto flex flex-col items-center justify-center'>
     <h1 className={`${Josefin.className} font-bold text-3xl sm:text-4xl p-9 text-[#1A0B5B]`}>Featured Products</h1>
     <div className='flex items-center gap-[29px] flex-wrap justify-center'>
-      {product.map((product: { image_url: string | StaticImport; name: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | Iterable<React.ReactNode> | null | undefined; code: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | Iterable<React.ReactNode> | null | undefined; price: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | Iterable<React.ReactNode> | null | undefined; },index: React.Key | null | undefined)=>(
+      {product.map((product,index)=>(
         
         // <Link key={product.id} href={`Pages/Featured/${product.id}`}>
       
