@@ -2,7 +2,6 @@ import React from 'react'
 import { Josefin_Sans } from 'next/font/google'
 import { client } from '@/sanity/lib/client';
 import Image from 'next/image';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 const getData = async () => {
   const response = await client.fetch(`
