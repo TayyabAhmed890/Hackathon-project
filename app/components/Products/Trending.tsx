@@ -107,7 +107,7 @@ const Trending = async () => {
             </div>
             </div>
             <div className='h-[262px] w-[267px]  flex flex-col justify-between '>
-            {product2.map((product:any,key:number)=>(
+            {product2.map((product:Product,key:number)=>(
                 <>
                 <div key={key} className='h-[74px] w-[267px]  flex items-center gap-2'>
                     <div className='h-[74px] w-[107px] bg-[#F5F6F8] flex items-center justify-center'>
