@@ -44,7 +44,7 @@ const LatestProducts = async () => {
     <h1>Special Offer</h1>
    </div>
    <div className='flex items-center gap-[29px] flex-wrap justify-center'>
-   {product.map((items: { image_url: string | StaticImport; name: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | Iterable<React.ReactNode> | null | undefined; price: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | Iterable<React.ReactNode> | null | undefined },index: React.Key | null | undefined)=>(
+   {product.map((items,index)=>(
     <div key={index} className=' h-[306px] w-[360px] flex flex-col justify-between'><div className='h-[270px] w-[360px] flex items-center justify-center bg-gray-50'>
       <Image className='' src={items.image_url} alt='hello' height={200} width={200}></Image>
     </div>
