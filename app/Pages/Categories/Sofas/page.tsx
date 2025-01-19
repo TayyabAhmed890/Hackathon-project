@@ -5,6 +5,15 @@ import Image from "next/image";
 import { FaRegHeart, FaSearchPlus } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  quantity: number;
+  price: number;
+  image_url: string;
+  rating?: number; // Optional field
+}
 
 const Josefin = Josefin_Sans({subsets:['latin']});
 
@@ -12,7 +21,7 @@ const lato = Lato({subsets:['latin'],
     weight: ['400', '700','100']
 });
 
-const getData = async () => {
+const getData = async ():Promise<Product[]> => {
   const response = await client.fetch(`
       *[_type == "product" && category == "Sofa"]
   {
@@ -40,7 +49,7 @@ const page =async () => {
         <div className='flex items-center'><Category/></div>
       </div>
         <div className='flex items-center gap-[29px] flex-wrap justify-center '>
-          {chairs.map((product:any,index:number)=>(
+          {chairs.map((product:Product,index:number)=>(
             
             // <Link key={product.id} href={`Pages/Featured/${product.id}`}>
           

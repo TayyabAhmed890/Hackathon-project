@@ -6,7 +6,17 @@ import Image from 'next/image';
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
 
-const getData = async () => {
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  quantity: number;
+  price: number;
+  image_url: string;
+  rating?: number; // Optional field
+}
+
+const getData = async ():Promise<Product[]> => {
   const products = await client.fetch(`
     *[_type == "product"]{
     id,
@@ -39,7 +49,7 @@ const page = async () => {
         <div className='flex items-center'><Category/></div>
       </div>
        <div className='flex items-center gap-[29px] flex-wrap justify-center '>
-         {response.map((product:any,index:number)=>(
+         {response.map((product:Product,index:number)=>(
            
            // <Link key={product.id} href={`Pages/Featured/${product.id}`}>
          
@@ -60,7 +70,6 @@ const page = async () => {
            <div className=' w-[14px] h-[4px] bg-[#F701A8] rounded-[10px]'></div>
            <div className=' w-[14px] h-[4px] group-hover:bg-[#FFEAC1] bg-[#00009D] rounded-[10px]'></div>
          </div>
-         <h1 className={`${Josefin.className} font-semibold text-[14px] group-hover:text-white text-[#151875]`}>{product.code}</h1>
          <h1 className={`mb-3 ${lato.className} font-semibold text-[14px] group-hover:text-white text-[#151875]`}>PKR:{product.price}</h1>
          </div>
          // </Link>

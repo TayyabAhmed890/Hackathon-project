@@ -3,7 +3,17 @@ import { Josefin_Sans } from 'next/font/google'
 import { client } from '@/sanity/lib/client';
 import Image from 'next/image';
 
-const getData = async () => {
+interface Product {
+    id: string;
+    name: string;
+    description: string;
+    quantity: number;
+    price: number;
+    image_url: string;
+    rating?: number; // Optional field
+  }
+
+const getData = async ():Promise<Product[]> => {
   const response = await client.fetch(`
     [
       *[_type == "product" && category == "Chair"][18],
@@ -60,7 +70,7 @@ const Trending = async () => {
         <h1 className={`${Josefin.className} font-bold text-4xl mt-7 text-[#1A0B5B]`}>Trending Products</h1>
         </div>
         <div className=' h-auto w-auto flex justify-center items-center gap-[29px] flex-wrap'>
-            {product.map((item:any,index:number)=>(
+            {product.map((item:Product,index:number)=>(
             <div key={index} className='w-[270px] h-[350px]  flex flex-col items-center pt-3 justify-start'>
                 <div className='h-[244px] w-[247px] bg-[#F5F6F8] flex items-center justify-center'>
                     <Image src={item.image_url} alt="" height={190} width={190} className=''/>

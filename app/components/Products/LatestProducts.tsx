@@ -3,7 +3,17 @@ import React from 'react'
 import { Josefin_Sans } from 'next/font/google'
 import { client } from '@/sanity/lib/client'
 
-const getData = async () => {
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  quantity: number;
+  price: number;
+  image_url: string;
+  rating?: number; // Optional field
+}
+
+const getData = async ():Promise<Product[]> => {
   const response = await client.fetch(`
     [
       *[_type == "product" && category == "Chair"][17],
@@ -43,7 +53,7 @@ const LatestProducts = async () => {
     <h1>Special Offer</h1>
    </div>
    <div className='flex items-center gap-[29px] flex-wrap justify-center'>
-   {product.map((items:any,index:number)=>(
+   {product.map((items:Product,index:number)=>(
     <div key={index} className=' h-[306px] w-[360px] flex flex-col justify-between'><div className='h-[270px] w-[360px] flex items-center justify-center bg-gray-50'>
       <Image className='' src={items.image_url} alt='hello' height={200} width={200}></Image>
     </div>
