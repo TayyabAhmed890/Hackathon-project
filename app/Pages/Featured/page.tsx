@@ -47,7 +47,7 @@ return response;
 }
 
 
-const Featured = async () => {
+const page = async () => {
   const product = await getData()
   return (
    <>
@@ -56,7 +56,6 @@ const Featured = async () => {
     <div className='flex items-center gap-[29px] flex-wrap justify-center'>
       {product.map((product:Product,index:number)=>(
         
-        // <Link key={product.id} href={`Pages/Featured/${product.id}`}>
       
       <div key={index} className='hover:bg-[#2F1AC4] group h-[361px] w-[270px] flex justify-between items-center flex-col relative shadow-lg'>
         <div className='h-[236px] w-[270px] flex items-center justify-center bg-gray-50'>
@@ -78,7 +77,6 @@ const Featured = async () => {
      
       <h1 className={`mb-3 ${lato.className} font-semibold text-[14px] group-hover:text-white text-[#151875]`}>{product.price}</h1>
       </div>
-      // </Link>
       ))}
       
     </div>
@@ -87,4 +85,4 @@ const Featured = async () => {
   )
 }
 
-export default Featured
+export default page;
