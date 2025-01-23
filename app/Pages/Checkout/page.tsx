@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useCart } from "@/app/context/cart";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Checkout = () => {
   const { state } = useCart();
   const router = useRouter();
   const [userDetails, setUserDetails] = useState({
@@ -145,4 +145,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Checkout;
