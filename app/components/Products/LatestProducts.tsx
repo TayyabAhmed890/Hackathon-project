@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { Josefin_Sans } from 'next/font/google'
 import { client } from '@/sanity/lib/client'
+import Link from 'next/link';
 
 interface Product {
   id: string;
@@ -53,18 +54,21 @@ const LatestProducts = async () => {
     <h1>Special Offer</h1>
    </div>
    <div className='flex items-center gap-[29px] flex-wrap justify-center'>
-   {product.map((items:Product,index:number)=>(
-    <div key={index} className=' h-[306px] w-[360px] flex flex-col justify-between'><div className='h-[270px] w-[360px] flex items-center justify-center bg-gray-50'>
-      <Image className='' src={items.image_url} alt='hello' height={200} width={200}></Image>
+   {product.map((product:Product,index:number)=>(
+
+     <Link key={index} href={`/Product/${product.id}`}>
+    <div className=' h-[306px] w-[360px] flex flex-col justify-between'><div className='h-[270px] w-[360px] flex items-center justify-center bg-gray-50'>
+      <Image className='' src={product.image_url} alt='hello' height={200} width={200}></Image>
     </div>
     <div className='flex justify-between mx-3 mb-1'>
-      <h1 className={`${Josefin.className} text-[#151875] text-[16px]`}>{items.name}</h1>
+      <h1 className={`${Josefin.className} text-[#151875] text-[16px]`}>{product.name}</h1>
       <div className='flex gap-3'>
-      <h1 className={`${Josefin.className} text-[#151875]`}>{items.price}</h1>
+      <h1 className={`${Josefin.className} text-[#151875]`}>{product.price}</h1>
       <h1 className={`${Josefin.className}  text-[#FB2448]`}><s>$65.00</s></h1>
       </div>
     </div>
     </div>
+    </Link>
    ))}
     </div>
   

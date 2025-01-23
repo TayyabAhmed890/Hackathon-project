@@ -21,8 +21,8 @@ const toggle = () => {
         Open && (
             <ul className='absolute top-[513px] border-2 rounded-sm w-auto flex flex-col bg-white z-10'>
                 <Link href={'/Pages/Shop'} className='border-b px-2 py-1 hover:text-white hover:bg-[#7E33E0]'><li>All Products</li></Link>
-                <Link href={'/Pages/Categories/Chairs'} className='border-b px-2 py-1 hover:text-white hover:bg-[#7E33E0]'><li>Chairs</li></Link>
-                <Link href={'/Pages/Categories/Sofas'} className=' px-2 py-1 hover:text-white hover:bg-[#7E33E0]'><li>Sofas</li></Link>
+                <Link href={'/Pages/Shop/Categories/Chairs'} className='border-b px-2 py-1 hover:text-white hover:bg-[#7E33E0]'><li>Chairs</li></Link>
+                <Link href={'/Pages/Shop/Categories/Sofas'} className=' px-2 py-1 hover:text-white hover:bg-[#7E33E0]'><li>Sofas</li></Link>
             </ul>
         )
     }

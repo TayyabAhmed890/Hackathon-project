@@ -6,6 +6,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
 import { FaSearchPlus } from "react-icons/fa";
 import { client } from '@/sanity/lib/client';
+import Link from 'next/link';
 
 const Josefin = Josefin_Sans({subsets:['latin']});
 
@@ -56,8 +57,9 @@ const Featured = async () => {
     <div className='flex items-center gap-[29px] flex-wrap justify-center'>
       {product.map((product:Product,index:number)=>(
         
+        <Link key={index} href={`/Product/${product.id}`}>
       
-      <div key={index} className='hover:bg-[#2F1AC4] group h-[361px] w-[270px] flex justify-between items-center flex-col relative shadow-lg'>
+      <div className='hover:bg-[#2F1AC4] group h-[361px] w-[270px] flex justify-between items-center flex-col relative shadow-lg'>
         <div className='h-[236px] w-[270px] flex items-center justify-center bg-gray-50'>
           <div className='  hidden absolute top-2 left-2 w-auto group-hover:block'>
             <div className='flex gap-3 '>
@@ -77,6 +79,7 @@ const Featured = async () => {
      
       <h1 className={`mb-3 ${lato.className} font-semibold text-[14px] group-hover:text-white text-[#151875]`}>{product.price}</h1>
       </div>
+      </Link>
       ))}
       
     </div>

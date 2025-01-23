@@ -1,118 +1,117 @@
-"use client"
-// context/cart.tsx
+"use client";
 
-import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from "react";
 
-interface Product {
-  id: string;
+// Define the product type
+interface CartProduct {
+  id: number;
   name: string;
   price: string;
-  image: string;
   quantity: number;
+  imageUrl: string; // Assuming you have this in your product schema as well
 }
 
-interface CartContextType {
-  cartItems: Product[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  increaseQuantity: (productId: string) => void;
-  decreaseQuantity: (productId: string) => void;
-  clearCart: () => void;
-  showPopup: boolean; // Added showPopup state
-  popupMessage: string; // Added message for the popup
+// Define actions for the reducer
+type CartAction =
+  | { type: "ADD_TO_CART"; product: CartProduct }
+  | { type: "REMOVE_FROM_CART"; id: number }
+  | { type: "INCREASE_QUANTITY"; id: number }
+  | { type: "DECREASE_QUANTITY"; id: number };
+
+// Define the cart state type
+interface CartState {
+  cart: CartProduct[];
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+// Initial state
+const initialState: CartState = {
+  cart: [],
+};
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [isClient, setIsClient] = useState(false); // Track if we're on the client side
-  const [cartItems, setCartItems] = useState<Product[]>([]);
-  const [showPopup, setShowPopup] = useState(false); // Track whether the popup is shown
-  const [popupMessage, setPopupMessage] = useState(''); // Message to display in the popup
-
-  useEffect(() => {
-    setIsClient(true);
-    const storedCartItems = localStorage.getItem('cartItems');
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isClient && cartItems.length > 0) {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    }
-  }, [cartItems, isClient]);
-
-  const addToCart = (product: Product) => {
-    setCartItems((prev) => {
-      const existingProduct = prev.find((item) => item.id === product.id);
+// Reducer function
+const cartReducer = (state: CartState, action: CartAction): CartState => {
+  switch (action.type) {
+    case "ADD_TO_CART":
+      const existingProduct = state.cart.find((item) => item.id === action.product.id);
       if (existingProduct) {
-        return prev.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
+        return {
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === action.product.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        };
       } else {
-        return [...prev, { ...product, quantity: 1 }];
+        return {
+          ...state,
+          cart: [...state.cart, { ...action.product, quantity: 1 }],
+        };
       }
-    });
 
-    // Show the popup with a message
-    setPopupMessage(`${product.name} has been added to your cart!`);
-    setShowPopup(true);
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.id),
+      };
 
-    // Hide the popup after 3 seconds
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 3000);
-  };
+    case "INCREASE_QUANTITY":
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === action.id ? { ...item, quantity: item.quantity + 1 } : item
+        ),
+      };
 
-  const removeFromCart = (productId: string) => {
-    setCartItems((prev) => {
-      const updatedCart = prev.filter((item) => item.id !== productId);
-      localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-      return updatedCart;
-    });
-  };
+    case "DECREASE_QUANTITY":
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === action.id && item.quantity > 1
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        ),
+      };
 
-  const increaseQuantity = (productId: string) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const decreaseQuantity = (productId: string) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === productId && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
-  };
-
-  const clearCart = () => {
-    setCartItems([]);
-    localStorage.removeItem('cartItems');
-  };
-
-  if (!isClient) {
-    return null; // Prevent rendering the component until client-side is mounted
+    default:
+      return state;
   }
+};
+
+// Create Context
+const CartContext = createContext<{
+  state: CartState;
+  dispatch: React.Dispatch<CartAction>;
+}>({
+  state: initialState,
+  dispatch: () => null,
+});
+
+// Provider component
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [state, dispatch] = useReducer(cartReducer, initialState, (initialState) => {
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart");
+      if (savedCart) {
+        return { cart: JSON.parse(savedCart) };
+      }
+    }
+    return initialState;
+  });
+
+  // Save the cart to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    }
+  }, [state.cart]);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, showPopup, popupMessage }}>
+    <CartContext.Provider value={{ state, dispatch }}>
       {children}
     </CartContext.Provider>
   );
 };
 
-// Custom hook to use the CartContext
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
-  }
-  return context;
-};
+// Custom hook to use the cart context
+export const useCart = () => useContext(CartContext);

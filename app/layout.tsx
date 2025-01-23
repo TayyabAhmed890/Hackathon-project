@@ -5,7 +5,7 @@ import Top from "./components/Header/Top";
 import Navbar from "./components/Header/Navbar";
 import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./context/cart";
-import CartPopup from "./components/CartPopup";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,14 +33,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-      <CartProvider>
-
+        <CartProvider>
         <Top/>
         <Navbar/>
-        <CartPopup/>
         {children}
+        <ToastContainer />
         <Footer/>
-      </CartProvider>
+        </CartProvider>
+      
       </body>
     </html>
   );

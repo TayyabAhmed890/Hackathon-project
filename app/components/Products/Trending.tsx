@@ -2,6 +2,7 @@ import React from 'react'
 import { Josefin_Sans } from 'next/font/google'
 import { client } from '@/sanity/lib/client';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Product {
     id: string;
@@ -70,10 +71,12 @@ const Trending = async () => {
         <h1 className={`${Josefin.className} font-bold text-4xl mt-7 text-[#1A0B5B]`}>Trending Products</h1>
         </div>
         <div className=' h-auto w-auto flex justify-center items-center gap-[29px] flex-wrap'>
-            {product.map((item:Product,index:number)=>(
+            {product.map((product:Product,index:number)=>(
+
+<Link key={index} href={`/Product/${product.id}`}>
             <div key={index} className='w-[270px] h-[350px]  flex flex-col items-center pt-3 justify-start'>
                 <div className='h-[244px] w-[247px] bg-[#F5F6F8] flex items-center justify-center'>
-                    <Image src={item.image_url} alt="" height={190} width={190} className=''/>
+                    <Image src={product.image_url} alt="" height={190} width={190} className=''/>
                 </div>
                 <div className='mt-5'>
                     <h1 className={`${Josefin.className} text-xl`}>Cantilever chair</h1>
@@ -83,6 +86,7 @@ const Trending = async () => {
                     </div>
                 </div>
             </div>
+            </Link>
             ))}
         </div>
         <div className='container px-5 flex items-center justify-center gap-[22px] flex-wrap mb-10 '>
@@ -107,9 +111,8 @@ const Trending = async () => {
             </div>
             </div>
             <div className='h-[262px] w-[267px]  flex flex-col justify-between '>
-            {product2.map((product:Product,key:number)=>(
-                <>
-                <div key={key} className='h-[74px] w-[267px]  flex items-center gap-2'>
+            {product2.map((product:Product,index:number)=>(
+                <div key={index} className='h-[74px] w-[267px]  flex items-center gap-2'>
                     <div className='h-[74px] w-[107px] bg-[#F5F6F8] flex items-center justify-center'>
                         <Image className='h-[71px] w-[64px]' src={product.image_url} alt="" height={100} width={100}/>
                     </div>
@@ -118,7 +121,6 @@ const Trending = async () => {
                         <h1><s>$32.00</s></h1>
                     </div>
                 </div>
-                </>
             ))}
             </div>
         </div>

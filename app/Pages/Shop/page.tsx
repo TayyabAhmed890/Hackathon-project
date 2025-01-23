@@ -1,13 +1,13 @@
-
 import Category from '@/app/components/Category';
 import { client } from '@/sanity/lib/client'
 import { Josefin_Sans, Lato } from 'next/font/google';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
 
 interface Product {
-  id: string;
+  id: number;
   name: string;
   description: string;
   quantity: number;
@@ -51,13 +51,13 @@ const page = async () => {
        <div className='flex items-center gap-[29px] flex-wrap justify-center '>
          {response.map((product:Product,index:number)=>(
            
-           // <Link key={product.id} href={`Pages/Featured/${product.id}`}>
+           <Link key={index} href={`/Product/${product.id}`}>
          
          <div key={index} className='hover:bg-[#2F1AC4] group h-[361px] w-[270px] flex justify-between items-center flex-col relative shadow-lg'>
            <div className='h-[236px] w-[270px] flex items-center justify-center bg-gray-50'>
              <div className='  hidden absolute top-2 left-2 w-auto group-hover:block'>
                <div className='flex gap-3 '>
-               <div className='rounded-full bg-[#EEEFFB] h-[30px] w-[30px] flex items-center justify-center'><FiShoppingCart height={14} width={14} className='text-[#2F1AC4]'/></div>
+               <div className='rounded-full bg-[#EEEFFB] h-[30px] w-[30px] flex items-center justify-center'><FiShoppingCart className='text-[#1A0B5B]'/></div>
                <div className='rounded-full h-[30px] w-[30px] flex items-center justify-center'><FaRegHeart height={17} width={17} className='text-[#1DB4E7]'/></div>
                <div className='rounded-full h-[30px] w-[30px] flex items-center justify-center'><FaSearchPlus height={15} width={15} className='text-[#1DB4E7]'/></div>
                </div>
@@ -72,7 +72,7 @@ const page = async () => {
          </div>
          <h1 className={`mb-3 ${lato.className} font-semibold text-[14px] group-hover:text-white text-[#151875]`}>PKR:{product.price}</h1>
          </div>
-         // </Link>
+        </Link>
          ))}
          
        </div>
